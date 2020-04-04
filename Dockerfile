@@ -1,2 +1,6 @@
-FROM node:carbon
-RUN npm install -g @mapbox/togeojson && apt-get update && apt-get install -y jq
+FROM node
+RUN apt update && \
+    apt install -y jq && \
+    npm install -g @mapbox/togeojson
+ADD convert.sh .
+RUN chmod +x convert.sh
